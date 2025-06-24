@@ -1,18 +1,24 @@
-// 怪獣速報 裏記録保管庫 - JavaScript
+// 怪獣速報 裏記録保管庫 - JavaScript (拡張版)
 
 // コンテンツデータを保存する配列
 let contents = [
     {
-        title: "サンプル作品1",
-        caption: "ここに作品の説明やキャプションを入力してください。作品の背景やコンセプトなどを詳しく説明できます。",
-        link: "#",
-        image: null
+        title: "千葉工業新聞",
+        caption: "冒頭のシーンで、男が見ているニュース",
+        link: "https://7500yenorange.github.io/ChibaTechNews/MtTsukuba.html",
+        image: "Picture/ChibaTechNewsRogo.png"
     },
     {
-        title: "サンプル作品2", 
-        caption: "別の作品の説明です。それぞれの作品に個別のタイトル、説明、リンクを設定できます。",
+        title: "緊急怪獣速報", 
+        caption: "怪獣が出現した際、某A省から発表される速報",
         link: "#",
-        image: null
+        image: "Picture/Emergency.png"
+    },
+    {
+        title:"temp",
+        caption:"temp2",
+        link:"#",
+        image:null
     }
 ];
 
@@ -30,24 +36,71 @@ function renderGallery() {
         return;
     }
 
-    gallery.innerHTML = contents.map(content => `
+    gallery.innerHTML = contents.map((content, index) => `
         <div class="card">
-            <div class="image-container">
+            <div class="image-container" onclick="openModal(${index})">
                 ${content.image ? 
-                    `<img src="${content.image}" alt="${content.title}" style="width: 100%; height: 100%; object-fit: cover;">` :
+                    `<img src="${content.image}" alt="${content.title}">` :
                     '<div class="image-placeholder">🖼️</div>'
                 }
             </div>
             <div class="card-content">
                 <h3 class="card-title">${content.title}</h3>
                 <p class="card-caption">${content.caption}</p>
-                <a href="${content.link}" class="card-link" target="_blank" rel="noopener noreferrer">
-                    <span>詳細を見る</span>
-                    <span>→</span>
-                </a>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <div class="card-link" onclick="openModal(${index})">
+                        <span>詳細を見る</span>
+                        <span>→</span>
+                    </div>
+                    ${(content.link && content.link !== '#') ? 
+                        `<a class="card-link" href="${content.link}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
+                            <span>サイトを見る</span>
+                            <span>↗</span>
+                        </a>` : ''
+                    }
+                </div>
             </div>
         </div>
     `).join('');
+}
+
+// モーダルを開く関数
+function openModal(index) {
+    const content = contents[index];
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalCaption = document.getElementById('modalCaption');
+    const modalLink = document.getElementById('modalLink');
+
+    if (content.image) {
+        modalImage.src = content.image;
+        modalImage.alt = content.title;
+        modalImage.style.display = 'block';
+    } else {
+        modalImage.style.display = 'none';
+    }
+
+    modalTitle.textContent = content.title;
+    modalCaption.textContent = content.caption;
+    modalLink.href = content.link;
+
+    // リンクが有効でない場合は非表示
+    if (content.link === '#' || !content.link) {
+        modalLink.style.display = 'none';
+    } else {
+        modalLink.style.display = 'inline-flex';
+    }
+
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // スクロールを無効化
+}
+
+// モーダルを閉じる関数
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // スクロールを有効化
 }
 
 // 新しいコンテンツを追加する関数
@@ -91,39 +144,81 @@ function listContents() {
     return contents;
 }
 
-// 初期表示
+// コンテンツを編集する関数
+function editContent(index, newTitle, newCaption, newLink, newImage = null) {
+    if (index >= 0 && index < contents.length) {
+        const oldContent = contents[index];
+        contents[index] = {
+            title: newTitle || oldContent.title,
+            caption: newCaption || oldContent.caption,
+            link: newLink || oldContent.link,
+            image: newImage !== null ? newImage : oldContent.image
+        };
+        renderGallery();
+        console.log('コンテンツが編集されました:', contents[index]);
+    } else {
+        console.error('無効なインデックスです:', index);
+    }
+}
+
+// 複数のコンテンツを一括追加する関数
+function addMultipleContents(contentsArray) {
+    contentsArray.forEach(content => {
+        contents.push({
+            title: content.title,
+            caption: content.caption,
+            link: content.link || '#',
+            image: content.image || null
+        });
+    });
+    renderGallery();
+    console.log(`${contentsArray.length}件のコンテンツが追加されました`);
+}
+
+// コンテンツをJSONとしてエクスポート
+function exportContents() {
+    const jsonData = JSON.stringify(contents, null, 2);
+    console.log('コンテンツデータ:', jsonData);
+    return jsonData;
+}
+
+// JSONからコンテンツをインポート
+function importContents(jsonData) {
+    try {
+        const importedContents = JSON.parse(jsonData);
+        if (Array.isArray(importedContents)) {
+            contents = importedContents;
+            renderGallery();
+            console.log('コンテンツがインポートされました');
+        } else {
+            console.error('無効なデータ形式です');
+        }
+    } catch (error) {
+        console.error('JSONの解析に失敗しました:', error);
+    }
+}
+
+// イベントリスナーの設定
 document.addEventListener('DOMContentLoaded', function() {
     renderGallery();
+
+    // モーダルを閉じるイベント
+    const modal = document.getElementById('imageModal');
+    const closeBtn = document.querySelector('.close');
+
+    closeBtn.onclick = closeModal;
+
+    // モーダル背景をクリックで閉じる
+    modal.onclick = function(event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+
+    // ESCキーでモーダルを閉じる
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeModal();
+        }
+    });
 });
-
-// 使用例（コンソールで実行可能）:
-/*
-// 新しいコンテンツを追加
-addContent(
-    "ゴジラ未公開映像", 
-    "1954年の撮影現場で発見された未公開のフィルム。ゴジラの咆哮シーンの別テイクが収録されている。",
-    "https://example.com/godzilla-footage",
-    "https://example.com/godzilla-image.jpg"
-);
-
-// モスラの秘密資料を追加
-addContent(
-    "モスラ幼虫期の生態記録",
-    "インファント島で撮影されたモスラの幼虫期における行動パターンの詳細な記録。科学者たちの秘密報告書。",
-    "https://example.com/mothra-larva",
-    null
-);
-
-// キングギドラの目撃証言を追加
-addContent(
-    "三つ首怪獣の謎",
-    "宇宙から飛来したとされる金色の怪獣についての目撃証言集。各地で報告された奇怪な現象についても詳述。",
-    "https://example.com/king-ghidorah"
-);
-
-// コンテンツ一覧を確認
-listContents();
-
-// 特定のコンテンツを削除（インデックス0番を削除）
-removeContent(0);
-*/

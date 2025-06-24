@@ -18,7 +18,7 @@ let contents = [
         title:"怪獣が出現したことを知らせるニュース",
         caption:"✈エアポート快特NEWSのニュース映像(外側)",
         link:"#",
-        image:"NewsImage.png"
+        image:"Picture/NewsImage.png"
     },
     {
         title:"miComet",

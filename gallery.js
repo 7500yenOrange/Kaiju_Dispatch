@@ -15,9 +15,9 @@ let contents = [
         image: "Picture/Emergency.png"
     },
     {
-        title:"temp",
-        caption:"temp2",
-        link:"#",
+        title:"miComet",
+        caption:"🦊＜ﾔｯﾊﾟ,miCometなんすね",
+        link:"https://x.com/DDyumi364/status/1934677257408467149",
         image:null
     }
 ];

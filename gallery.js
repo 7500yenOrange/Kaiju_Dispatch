@@ -4,7 +4,7 @@
 let contents = [
     {
         title: "千葉工業新聞",
-        caption: "冒頭のシーンで、男が見ているニュース",
+        caption: "冒頭のシーンで、男が見ているWebニュース",
         link: "https://7500yenorange.github.io/ChibaTechNews/MtTsukuba.html",
         image: "Picture/ChibaTechNewsRogo.png"
     },
@@ -15,8 +15,14 @@ let contents = [
         image: "Picture/Emergency.png"
     },
     {
+        title:"怪獣が出現したことを知らせるニュース",
+        caption:"✈エアポート快特NEWSのニュース映像(外側)",
+        link:"#",
+        image:"NewsImage.png"
+    },
+    {
         title:"miComet",
-        caption:"🦊🪧＜ﾔｯﾊﾟ,miCometなんすね",
+        caption:"🦊＜ﾔｯﾊﾟ,miCometなんすね",
         link:"https://x.com/DDyumi364/status/1934677257408467149",
         image:"Picture/miComet.jpg"
     }

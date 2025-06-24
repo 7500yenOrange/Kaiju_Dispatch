@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>怪獣速報 裏記録保管庫</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #999;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .card-caption {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .card-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .add-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 2rem;
+        }
+
+        .add-content h2 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, #56ab2f, #a8e6cf);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(86, 171, 47, 0.3);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>怪獣速報 裏記録保管庫</h1>
+            <p class="subtitle">怪獣たちの影に潜むもう一つの物語</p>
+        </header>
+
+        <div class="gallery" id="gallery">
+            <!-- サンプルコンテンツ -->
+            <div class="card">
+                <div class="image-container">
+                    <div class="image-placeholder">🖼️</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">サンプル作品1</h3>
+                    <p class="card-caption">ここに作品の説明やキャプションを入力してください。作品の背景やコンセプトなどを詳しく説明できます。</p>
+                    <a href="#" class="card-link">
+                        <span>詳細を見る</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <div class="image-placeholder">📷</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">サンプル作品2</h3>
+                    <p class="card-caption">別の作品の説明です。それぞれの作品に個別のタイトル、説明、リンクを設定できます。</p>
+                    <a href="#" class="card-link">
+                        <span>詳細を見る</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="gallery.js"></script>
+</body>
+</html>

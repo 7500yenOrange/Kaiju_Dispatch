@@ -16,7 +16,7 @@ let contents = [
     },
     {
         title:"miComet",
-        caption:"🦊＜ﾔｯﾊﾟ,miCometなんすね",
+        caption:"fox＜ﾔｯﾊﾟ,miCometなんすね",
         link:"https://x.com/DDyumi364/status/1934677257408467149",
         image:"Picture/miComet.jpg"
     }

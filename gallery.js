@@ -5,24 +5,28 @@ let contents = [
     {
         title: "千葉工業新聞",
         caption: "冒頭のシーンで、男が見ているWebニュース",
+        description: "映画の冒頭シーンに登場する架空のニュースサイト。筑波山での謎の地震について報道している。千葉工業大学の校章をモチーフにしたロゴデザインが特徴的で、リアルなニュースサイトの体裁を完全に再現している。このサイトは実際にウェブ上で閲覧可能で、映画の世界観を補完する重要な要素となっている。",
         link: "https://7500yenorange.github.io/ChibaTechNews/MtTsukuba.html",
         image: "Picture/ChibaTechNewsRogo.png"
     },
     {
         title: "緊急怪獣速報", 
         caption: "怪獣が出現した際、某A省から発表される速報",
+        description: "怪獣出現時に政府機関から発表される緊急速報のデザイン。災害情報と同様の緊急性を持つレイアウトで、怪獣という非現実的な存在を現実的な情報として扱う演出が印象的。赤色を基調とした警告色使いと、簡潔で分かりやすい情報提示が特徴。実際の緊急速報システムを参考にしたリアルなデザインとなっている。",
         link: "#",
         image: "Picture/Emergency.png"
     },
     {
         title:"怪獣が出現したことを知らせるニュース",
         caption:"✈エアポート快特NEWSのニュース映像(外側)",
+        description:"架空のニュース番組「エアポート快特NEWS」で放送される怪獣出現のニュース映像。実際のテレビニュースの構成を忠実に再現し、キャスターの表情や背景のグラフィック、速報テロップなど細部まで作り込まれている。怪獣というファンタジー要素を、日常的なニュース番組の中に自然に組み込むことで、作品世界のリアリティを高めている。",
         link:"#",
         image:"Picture/NewsImage.png"
     },
     {
         title:"miComet",
         caption:"🦊＜ﾔｯﾊﾟ,miCometなんすね",
+        description:"作品に登場するVTuberユニット「miComet」に関連するコンテンツ。現実のVTuber文化を作品世界に取り入れた要素で、キャラクターたちの日常生活により親近感を与える役割を果たしている。TwitterのポストとしてSNS上でも話題となった要素の一つ。現代的なサブカルチャーを作品に自然に組み込むことで、観客との距離を縮める効果を持っている。",
         link:"https://x.com/DDyumi364/status/1934677257408467149",
         image:"Picture/miComet.jpg"
     }
@@ -88,7 +92,7 @@ function openModal(index) {
     }
 
     modalTitle.textContent = content.title;
-    modalCaption.textContent = content.caption;
+    modalCaption.textContent = content.description || content.caption;
     modalLink.href = content.link;
 
     // リンクが有効でない場合は非表示
@@ -110,10 +114,11 @@ function closeModal() {
 }
 
 // 新しいコンテンツを追加する関数
-function addContent(title, caption, link, image = null) {
+function addContent(title, caption, link, image = null, description = null) {
     const newContent = {
         title: title,
         caption: caption,
+        description: description,
         link: link,
         image: image
     };
@@ -151,12 +156,13 @@ function listContents() {
 }
 
 // コンテンツを編集する関数
-function editContent(index, newTitle, newCaption, newLink, newImage = null) {
+function editContent(index, newTitle, newCaption, newLink, newImage = null, newDescription = null) {
     if (index >= 0 && index < contents.length) {
         const oldContent = contents[index];
         contents[index] = {
             title: newTitle || oldContent.title,
             caption: newCaption || oldContent.caption,
+            description: newDescription !== null ? newDescription : oldContent.description,
             link: newLink || oldContent.link,
             image: newImage !== null ? newImage : oldContent.image
         };
@@ -173,6 +179,7 @@ function addMultipleContents(contentsArray) {
         contents.push({
             title: content.title,
             caption: content.caption,
+            description: content.description || null,
             link: content.link || '#',
             image: content.image || null
         });

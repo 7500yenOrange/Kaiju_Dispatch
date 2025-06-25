@@ -136,6 +136,59 @@
             box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
         }
 
+        /* フッターのスタイル */
+        .footer {
+            margin-top: 4rem;
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .social-link.youtube {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+        }
+
+        .social-link.youtube:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.3);
+        }
+
+        .social-link.twitter {
+            background: rgba(0,0,0,1);
+            color: white;
+        }
+
+        .social-link.twitter:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(29, 161, 242, 0.3);
+        }
+
         /* モーダル関連のスタイル */
         .modal {
             display: none;
@@ -275,6 +328,17 @@
                 grid-template-columns: 1fr;
             }
 
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .social-link {
+                width: 200px;
+                justify-content: center;
+            }
+
             .modal-content {
                 width: 95%;
                 margin: 10px auto;
@@ -307,7 +371,24 @@
         </header>
 
         <div class="gallery" id="gallery">
+        </div>
+        
+        <footer class="footer">
+            <div class="social-links">
+                <a href="https://www.youtube.com/@CIT-FILMS/featured" target="_blank" rel="noopener noreferrer" class="social-link youtube">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    YouTube
+                </a>
+                <a href="https://x.com/citac_films" target="_blank" rel="noopener noreferrer" class="social-link twitter">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    X (旧Twitter)
+                </a>
             </div>
+        </footer>
     </div>
 
     <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">

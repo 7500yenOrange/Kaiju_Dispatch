@@ -24,6 +24,13 @@ let contents = [
         image:"Picture/NewsImage.png"
     },
     {
+        title:"怪獣速報に対するSNSの反応",
+        caption:"怪獣が出現した際の某SNS風のタイムライン",
+        description:"男が走るシーンに映し出される某SNSの反応。怪獣による被害を心配する声が多い模様。",
+        link:"#",
+        image:"Picture/Twitter.png"
+    },
+    {
         title:"miComet",
         caption:"🦊＜ﾔｯﾊﾟ,miCometなんすね",
         description:"本番前には消します。",

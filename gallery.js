@@ -24,11 +24,11 @@ let contents = [
         image:"Picture/NewsImage.png"
     },
     {
-        title:"怪獣速報に対するSNSの反応",
-        caption:"怪獣が出現した際の某SNS風のタイムライン",
-        description:"男が走るシーンに映し出される某SNSの反応。怪獣による被害を心配する声が多い模様。",
-        link:"#",
-        image:"Picture/Twitter.png"
+        title:"怪獣が出現したことを知らせるニュース",
+        caption:"✈エアポート快特NEWSの映像(full)",
+        description:"架空のニュース番組「エアポート快特NEWS」で放送される怪獣出現のニュース映像。実際のテレビニュースの構成を忠実に再現し、背景のグラフィック、速報テロップなど細部まで作り込まれている。この作品では、怪獣が出現したことを知らせる大切な情報の一つである。",
+        link:"https://www.youtube.com/watch?v=GbsxJTa4g4U",
+        image:"#"
     },
     {
         title:"miComet",

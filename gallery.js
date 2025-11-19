@@ -17,9 +17,9 @@ let contents = [
         image: "Picture/Emergency.png"
     },
     {
-        title:"怪獣が出現したことを知らせるニュース",
-        caption:"✈エアポート快特NEWSのニュース映像(外側)",
-        description:"架空のニュース番組「エアポート快特NEWS」で放送される怪獣出現のニュース映像。実際のテレビニュースの構成を忠実に再現し、背景のグラフィック、速報テロップなど細部まで作り込まれている。この作品では、怪獣が出現したことを知らせる大切な情報の一つである。",
+        title:"架空のSNS",
+        caption:"カラオケで男が見せているSNS",
+        description:"都心にはでない怪獣が都会に出たことにより、いつもより賑やかなSNS。この世界での怪獣の考え方がよく現れている。この作品では、怪獣が出現したことを知らせる大切な情報の一つである。",
         link:"#",
         image:"Picture/NewsImage.png"
     },
@@ -242,3 +242,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+

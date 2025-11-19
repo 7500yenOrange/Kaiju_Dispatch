@@ -31,6 +31,13 @@ let contents = [
         image:"Picture/NEWS.png"
     },
     {
+        title:"怪獣の解説動画",
+        caption:"冒頭で誰かが見ていた怪獣の解説動画",
+        description:"この世界で怪獣がどのようなものかを解説している動画。ずんだもんとめたんの掛け合いが特徴。この世界での怪獣の特徴、定義などを知ることができる。",
+        link:"https://youtu.be/bOVymJzrD60?si=uZjUFPtik5kLSo7B",
+        image:"#"
+    },
+    {
         title:"miComet",
         caption:"🦊＜ﾔｯﾊﾟ,miCometなんすね",
         description:"本番前には消します。",
@@ -242,4 +249,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 

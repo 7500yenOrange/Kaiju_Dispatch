@@ -21,7 +21,7 @@ let contents = [
         caption:"カラオケで男が見せているSNS",
         description:"都心にはでない怪獣が都会に出たことにより、いつもより賑やかなSNS。この世界での怪獣の考え方がよく現れている。この作品では、怪獣が出現したことを知らせる大切な情報の一つである。",
         link:"#",
-        image:"Picture/NewsImage.png"
+        image:"Picture/Twitter.png"
     },
     {
         title:"怪獣が出現したことを知らせるニュース",
@@ -251,6 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 
 
 

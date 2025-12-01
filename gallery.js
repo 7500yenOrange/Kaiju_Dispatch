@@ -37,6 +37,7 @@ let contents = [
         link:"https://youtu.be/bOVymJzrD60?si=uZjUFPtik5kLSo7B",
         image:"Picture/miComet.jpg"
     },
+    /*
     {
         title:"miComet",
         caption:"🦊＜ﾔｯﾊﾟ,miCometなんすね",
@@ -44,6 +45,7 @@ let contents = [
         link:"https://x.com/DDyumi364/status/1934677257408467149",
         image:"Picture/miComet.jpg"
     }
+    */
 ];
 
 // ギャラリーを表示する関数
@@ -249,6 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 
 
 

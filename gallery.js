@@ -28,7 +28,7 @@ let contents = [
         caption:"✈エアポート快特NEWSの映像(full)",
         description:"架空のニュース番組「エアポート快特NEWS」で放送される怪獣出現のニュース映像。実際のテレビニュースの構成を忠実に再現し、背景のグラフィック、速報テロップなど細部まで作り込まれている。この作品では、怪獣が出現したことを知らせる大切な情報の一つである。",
         link:"https://youtu.be/pVHrUo0w8ag",
-        image:"Picture/NEWS.png"
+        image:"Picture/CatNEWS.png"
     },
     {
         title:"怪獣の解説動画",
@@ -251,6 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 
 
 

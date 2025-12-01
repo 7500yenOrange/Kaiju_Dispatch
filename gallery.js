@@ -35,7 +35,7 @@ let contents = [
         caption:"冒頭で誰かが見ていた怪獣の解説動画",
         description:"この世界で怪獣がどのようなものかを解説している動画。ずんだもんとめたんの掛け合いが特徴。この世界での怪獣の特徴、定義などを知ることができる。",
         link:"https://youtu.be/bOVymJzrD60?si=uZjUFPtik5kLSo7B",
-        image:"Picture/Zundamon.jpg"
+        image:"Picture/Zundamon.png"
     },
     /*
     {
@@ -251,6 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 
 
 
